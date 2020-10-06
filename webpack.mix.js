@@ -1,4 +1,6 @@
 let mix = require('webpack-mix');
+require("./src/plugin/mix-replacer");
+
 
 mix.extend(
   "purgeCss",
@@ -63,7 +65,10 @@ mix.copyDirectory('src/img', 'dist/img');
 
 mix.copy('src/index.html', 'dist/index.html');
 
+mix.copyAndReplace("src/*.html", "dist");
+
 if (mix.inProduction()) {
+
   mix.disableNotifications();
 
   mix.options({
