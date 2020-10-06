@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Personal Antonino Tarantino's website",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/webpack-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/webpack-mix/setup/webpack.config.js",
@@ -24,6 +21,7 @@
   },
   "homepage": "https://github.com/AntoninoTarantino/antoninotarantino.com#readme",
   "devDependencies": {
+    "laravel-mix-purgecss": "^5.0.0",
     "resolve-url-loader": "^3.1.0",
     "sass": "^1.26.12",
     "sass-loader": "^8.0.2",

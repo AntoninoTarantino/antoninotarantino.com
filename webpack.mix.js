@@ -1,5 +1,35 @@
 let mix = require('webpack-mix');
 
+mix.extend(
+  "purgeCss",
+  new (class {
+    name() {
+      return ["purgeCss"];
+    }
+
+    register(config = {}) {
+      const {enabled, ...purgeCssConfig} = config;
+
+      this.enabled = enabled !== undefined ? enabled : mix.inProduction();
+
+      this.config = purgeCssConfig;
+    }
+
+    boot() {
+      if (!this.enabled) {
+        return;
+      }
+
+      mix.options({
+        postCss: [
+          ...mix.config.postCss,
+          require("postcss-purgecss-laravel")(this.config),
+        ],
+      });
+    }
+  })()
+);
+
 
 /*
  |--------------------------------------------------------------------------
@@ -18,7 +48,16 @@ mix.setPublicPath('dist');
 // mix.config.fileLoaderDirs.images = 'dist/images';
 
 mix.js('src/js/app.js', 'dist/js/');
-mix.sass('src/scss/app.scss', 'dist/css/');
+mix.sass('src/scss/app.scss', 'dist/css/')
+  .purgeCss({
+    enabled: mix.inProduction(),
+    folders: ['src'],
+    content: [
+      'src/*.html',
+      'dist/js/*.js'
+    ],
+    extensions: ['html', 'js', 'php', 'vue'],
+  });
 
 mix.copyDirectory('src/img', 'dist/img');
 
@@ -26,16 +65,28 @@ mix.copy('src/index.html', 'dist/index.html');
 
 if (mix.inProduction()) {
   mix.disableNotifications();
+
+  mix.options({
+    processCssUrls: true,
+    imgLoaderOptions: {
+      enabled: true
+    },
+    clearConsole: true,
+    cssNano: {
+      discardComments: {removeAll: true},
+    }
+  });
+
   mix.version([
     'dist/img'
   ]);
+
 } else {
   mix.sourceMaps();
   mix.webpackConfig({
     devtool: "source-map"
   });
 }
-
 
 
 // Full API
