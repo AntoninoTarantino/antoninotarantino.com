@@ -4,12 +4,14 @@ let dictionary = {
     "_hello": "Hello",
     "_italian": "Italian",
     "_english": "English",
+    "_typedHome": "Antonino Tarantino, Information, Analisys, Infrastructure",
 
   },
   "italian": {
     "_hello": "Ciao",
     "_italian": "Italiano",
     "_english": "Inglese",
+    "_typedHome": "Antonino Tarantino, Informazione, Analisi, Infrastrutture",
   }
 };
 
@@ -22,7 +24,25 @@ let set_lang = function set_lang (dictionary) {
   });
 };
 
+
+let typed = null;
+
+function textTyped() {
+  if ($('.text-slider').length == 1) {
+    let typed_strings = $('.text-slider-items').text();
+    typed = new Typed('.text-slider', {
+      strings: typed_strings.split(','),
+      typeSpeed: 80,
+      loop: true,
+      backDelay: 1100,
+      backSpeed: 30
+    });
+  }
+}
+
 function switcherFlag(lang){
+  if(typed) typed.destroy();
+  textTyped();
   let switcher = $('#switchLanguage');
   switch(lang) {
     case 'italian':
@@ -34,7 +54,8 @@ function switcherFlag(lang){
     default:
       switcher.html('<span class="flag-icon flag-icon-gb">');
   }
-};
+}
+
 
 $(function() {
   "use strict";
