@@ -49,8 +49,8 @@ mix.setPublicPath('dist');
 // mix.config.fileLoaderDirs.fonts = 'dist/fonts';
 // mix.config.fileLoaderDirs.images = 'dist/images';
 
-mix.js('src/js/app.js', 'dist/js/');
-mix.sass('src/scss/app.scss', 'dist/css/')
+mix.js('src/js/app.js', 'dist/js/')
+  .sass('src/scss/app.scss', 'dist/css/')
   .purgeCss({
     enabled: mix.inProduction(),
     folders: ['src'],
@@ -59,6 +59,7 @@ mix.sass('src/scss/app.scss', 'dist/css/')
       'dist/js/*.js'
     ],
     extensions: ['html', 'js', 'php', 'vue'],
+    // whitelistPatternsChildren: [/^owl-/],
   });
 
 mix.copyDirectory('src/img', 'dist/img');
