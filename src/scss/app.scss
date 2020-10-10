@@ -1,0 +1,19 @@
+@import "variables";
+
+@import "~bootstrap";
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+@import "~animate.css";
+@import '~owl.carousel/src/scss/owl.carousel';
+@import '~owl.carousel/src/scss/owl.theme.default';
+
+@import "~flag-icon-css/sass/variables";
+@import "~flag-icon-css/sass/flag-icon-base";
+@include flag-icon(it);
+@include flag-icon(gb);
+
+//@import "style";
+@import "style-green";
