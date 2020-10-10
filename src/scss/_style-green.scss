@@ -520,17 +520,19 @@ a:hover {
   -webkit-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
   visibility: visible !important;
-  color: #000;
 }
 
 .navbar-b .dropdown-menu {
   border-radius: 0;
+  min-width: 6rem;
+  padding: .0rem 0;
 }
 
 .navbar-b .dropdown-menu .dropdown-item {
-  color: #000;
-  background-color: white;
+  color: #fff;
+  background-color: #000;
   transition: all 500ms ease;
+  padding: 0rem 0;
 }
 
 .navbar-b .dropdown-menu .dropdown-item:hover {
