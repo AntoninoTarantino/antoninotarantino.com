@@ -5,9 +5,7 @@ Personal Antonino Tarantino's website
 
 https://antoninotarantino.com
 
-To Compile:
-```$ npm build production```
-or alternatively:
+To Compile run:
 ```$ npm run production```
 
 TODO:
