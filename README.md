@@ -10,4 +10,3 @@ To Compile run:
 
 TODO:
 + Add links to previous github commits and work
-+ Add a new GitHub project with Terraform or AWS CloudFormation to automatically create the small infrastructure.
